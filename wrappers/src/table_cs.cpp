@@ -97,7 +97,10 @@ REALM_EXPORT Results* table_create_sorted_results(Table* table_ptr, SharedRealm*
         unflatten_sort_clauses(sort_clauses, clause_count, flattened_column_indices, column_indices, ascending, properties);
 
         auto sort_descriptor = SortDescriptor(*table_ptr, column_indices, ascending);
-        return new Results(*realm, table_ptr->where(), sort_descriptor);
+        
+        auto ordering = DescriptorOrdering();
+        ordering.append_sort(std::move(sort_descriptor));
+        return new Results(*realm, table_ptr->where(), std::move(ordering));
     });
 }
     

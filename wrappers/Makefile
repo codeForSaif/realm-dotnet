@@ -2,8 +2,8 @@
 
 # Dependencies
 
-CORE_VER=2.8.4
-SYNC_VER=2.0.0-rc9
+CORE_VER=3.0.0-rc3
+SYNC_VER=2.0.0-rc11
 
 REALM_ENABLE_SYNC ?= 1
 
@@ -17,9 +17,9 @@ ifeq ($(REALM_ENABLE_SYNC),1)
 else
 	APPLE_PREPROCESSOR_DEFINITIONS=""
 	WRAPPERS_XCODE_TARGET=wrappers
-	APPLE_BUNDLE_NAME=realm-core-$(CORE_VER).tar.xz
+	APPLE_BUNDLE_NAME= realm-core-cocoa-v$(CORE_VER).tar.xz
 	APPLE_BUNDLE_URL="http://static.realm.io/downloads/core/$(APPLE_BUNDLE_NAME)"
-	ANDROID_BUNDLE_NAME=realm-core-android-$(CORE_VER).tar.gz
+	ANDROID_BUNDLE_NAME=realm-core-android-v$(CORE_VER).tar.gz
 	ANDROID_BUNDLE_URL="http://static.realm.io/downloads/core/$(ANDROID_BUNDLE_NAME)"
 endif
 
